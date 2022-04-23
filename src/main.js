@@ -4,17 +4,12 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
-import '@/assets/css/common.css'
-import '@/assets/css/bootstrap.min.css'
-import '@/assets/icons/feather.css'
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
-
-Vue.use(ElementUI)
 
 new Vue({
   router,
   store,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
