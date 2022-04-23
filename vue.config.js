@@ -5,7 +5,11 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'www.lovedd.cool/wp-json'
+        target: 'http://www.lovedd.cool/wp-json',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
       }
     }
   }
