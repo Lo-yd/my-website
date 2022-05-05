@@ -4,12 +4,7 @@
     <div class="main">
       <div class="layout">
         <div class="left">
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
+          <ArticleList :articleList="articleList" />
         </div>
         <div class="right">
           <HotPoint />
@@ -21,20 +16,30 @@
 
 <script>
 import OnePage from '@/components/OnePage'
-import Article from '@/views/home/Article'
+import ArticleList from '@/views/home/ArticleList'
 import HotPoint from '@/components/HotPoint'
+import { mapState } from 'vuex'
 export default {
   name: 'home',
   components: {
     OnePage,
-    Article,
+    ArticleList,
     HotPoint
   },
   data () {
     return {
-
+      params: {
+        page: null
+      }
     }
 
+  },
+  mounted () {
+    // 发请求
+    this.$store.dispatch('getArticleList', this.params)
+  },
+  computed: {
+    ...mapState({ articleList: state => state.home.articleList })
   }
 
 }

@@ -1,23 +1,23 @@
 <template>
   <div class="article">
     <article class="post-entry">
-      <img class="articleimg" src="@/assets/images/avatar.jpg" alt="" />
+      <img
+        class="articleimg"
+        :src="articleInfo.x_featured_media_medium"
+        alt=""
+      />
       <div class="post-info">
         <header class="entry-header">
-          <h2>Redis缓存异常</h2>
+          <h2>{{ articleInfo.title.rendered }}</h2>
         </header>
         <section class="entry-content">
-          当redis发生缓存雪崩、击穿、穿透时的场景缓存雪崩、击穿、穿透时
-          的场景缓存雪崩、击穿、穿透时的场景和应对方法，还有如何解
-          决redis缓存和数据库中的数据不一缓存雪崩
-          、击穿、穿透时的场景缓存雪崩、击穿、穿透时的场景缓存雪崩、击穿、穿透时的场景
-          缓存雪崩、击穿、穿透时的场景缓存雪崩、击穿、穿透时的场景致的问题
-          缓存雪崩、击穿、穿透时的场景 缓存雪崩、击穿、穿透时的场景
-          缓存雪崩、击穿、穿透时的场景
+          <span v-html="articleInfo.excerpt.rendered"> </span>
         </section>
         <footer class="entry-footer">
-          创建: 2022-03-07 | 更新: 2022-04-05 | 字数: 3801字 | 时长: 8分钟 |
-          作者: Sulv | 标签: Redis | 访问:
+          创建: {{ articleInfo.date.slice(0, 10) }} | 更新:
+          {{ articleInfo.modified.slice(0, 10) }} | 作者:
+          {{ articleInfo.x_author }} | 分类: {{ articleInfo.x_categories }} |
+          访问:
         </footer>
       </div>
     </article>
@@ -26,7 +26,8 @@
 
 <script>
 export default {
-  name: 'Article'
+  name: 'Article',
+  props: ["articleInfo"]
 
 }
 </script>
@@ -35,6 +36,7 @@ export default {
 .article {
   font-size: 16px;
   margin: 20px 0;
+  overflow: hidden;
   .post-entry {
     width: 95%;
     height: 160px;
